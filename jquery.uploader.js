@@ -89,6 +89,8 @@
 		// SHould we show the progress?
 		if (!self.canXHRUpload())
 			self.options.show_progress = self.options.show_manual_progress;
+		else
+			self.upload.hide();
 
 		// Add the events
 		self.new_file.click(function()
