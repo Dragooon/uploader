@@ -269,7 +269,7 @@ $.extend($._uploader.prototype, {
 		// Trigger the attach event
 		self._trigger('attach', event, {id: id, filename: self.getFileName(id), type: 'input', element: input});
 
-		$('#q_' + id).fadeIn(700);
+		$('#q_' + id).fadeIn(200);
 	},
 
 	/**
@@ -518,6 +518,8 @@ $.extend($._uploader.prototype, {
 	{
 		var self = this;
 		self.uploading = false;
+		self.current_index = null;
+		self.queued = [];
 	},
 
 	/**
