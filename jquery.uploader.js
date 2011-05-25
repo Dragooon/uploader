@@ -275,7 +275,7 @@ $.extend($._uploader.prototype, {
 	/**
 	 * Adds a "File" instance to the uploaders list
 	 */
-	updateQueuedFiles: function(files)
+	updateQueuedFiles: function(files, event)
 	{
 		var self = this;
 
