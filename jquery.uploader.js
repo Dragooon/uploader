@@ -432,6 +432,7 @@ $.extend($._uploader.prototype, {
 		// XHR Upload?
 		if (self.canXHRUpload())
 		{
+			self.timer = Date.getTime();
 			var xhr = new XMLHttpRequest();
 			self.current_xhr = xhr;
 			xhr.open('POST', self.options.url + self.options.url_suffix.replace('%filename%', self.getFileName(i)), true);
@@ -441,7 +442,11 @@ $.extend($._uploader.prototype, {
 			xhr.upload.onprogress = function(e)
 			{
 				if (e.lengthComputable)
-					self.updateProgress(e.loaded, e.total, e);
+					if ((Date.getTime() - self.timer) > 500)
+					{
+						self.timer = Date.getTime();
+						self.updateProgress(e.loaded, e.total, e);
+					}
 			};
 			xhr.onreadystatechange = function(e)
 			{
