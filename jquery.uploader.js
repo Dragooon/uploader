@@ -412,7 +412,7 @@ $.extend($._uploader.prototype, {
 		// Showing some actual progress? Create the basic containers
 		if (self.options.show_progress)
 		{
-			self.upload_status = $('<span></span>');
+			self.upload_status = $('<div></div>');
 			self.upload_status.appendTo(self.progress_area);
 
 			if (typeof $.fn.progressbar != 'undefined')
