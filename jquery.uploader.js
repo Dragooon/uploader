@@ -380,7 +380,7 @@ $.extend($._uploader.prototype, {
 	{
 		var self = this;
 		self.current_index = i;
-		self.upload_started = new Date().getTime() / 1000;
+		self.upload_started = (new Date()).getTime() / 1000;
 		self.last_uploaded = 0;
 		self.last_update = self.upload_started;
 		self.uploading = true;
@@ -393,7 +393,7 @@ $.extend($._uploader.prototype, {
 		}
 
 		// Generate a base key for tracing progress
-		self.base_key = new Date().getTime();
+		self.base_key = (new Date()).getTime();
 
 		// Set the basic progress reporting stuff
 		var filename = $('<strong>' + self.getFileName(self.current_index) + '</strong>');
@@ -432,7 +432,7 @@ $.extend($._uploader.prototype, {
 		// XHR Upload?
 		if (self.canXHRUpload())
 		{
-			self.timer = Date.getTime();
+			self.timer = (new Date()).getTime();
 			var xhr = new XMLHttpRequest();
 			self.current_xhr = xhr;
 			xhr.open('POST', self.options.url + self.options.url_suffix.replace('%filename%', self.getFileName(i)), true);
@@ -442,9 +442,9 @@ $.extend($._uploader.prototype, {
 			xhr.upload.onprogress = function(e)
 			{
 				if (e.lengthComputable)
-					if ((Date.getTime() - self.timer) > 500)
+					if (((new Date()).getTime() - self.timer) > 500)
 					{
-						self.timer = Date.getTime();
+						self.timer = (new Date()).getTime();
 						self.updateProgress(e.loaded, e.total, e);
 					}
 			};
